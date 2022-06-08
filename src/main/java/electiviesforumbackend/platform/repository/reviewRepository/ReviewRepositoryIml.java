@@ -1,0 +1,16 @@
+package electiviesforumbackend.platform.repository.reviewRepository;
+
+import electiviesforumbackend.platform.entity.Review;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+public class ReviewRepositoryIml implements ReviewRepository {
+    private final ReviewDao reviewDao;
+
+    @Override
+    public void saveReview(Review review) {
+        reviewDao.saveAndFlush(review);
+    }
+}
