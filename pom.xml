@@ -13,11 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>platform</name>
 	<description>Electivies forum backend</description>
-	<properties>
-		<flyway.user>root</flyway.user>
-		<flyway.password>root</flyway.password>
-		<java.version>11</java.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
