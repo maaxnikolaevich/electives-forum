@@ -88,40 +88,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.flywaydb</groupId>
-				<artifactId>flyway-maven-plugin</artifactId>
-				<version>8.0.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>migrate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<url>jdbc:postgresql://ec2-3-224-164-189.compute-1.amazonaws.com:5432/d6oh8k0llhckhe</url>
-					<user>njcheajwuhjdlc</user>
-					<password>38a7c1f2c24ff09e471e0df9a28fb0c56639b6802ccd5eaa30f6f3a2fb8c6b74</password>
-					<locations>
-						<location>src/main/resources/db/migration</location>
-					</locations>
-					<sqlMigrationPrefix>V1</sqlMigrationPrefix>
-					<sqlMigrationSeparator>__</sqlMigrationSeparator>
-					<sqlMigrationSuffixes>
-						<sqlMigrationSuffix>.sql</sqlMigrationSuffix>
-						<sqlMigrationSuffix>.pkg</sqlMigrationSuffix>
-						<sqlMigrationSuffix>.pkb</sqlMigrationSuffix>
-					</sqlMigrationSuffixes>
-					<placeholders>
-						<aplaceholder>Base_version</aplaceholder>
-						<otherplaceholder>Base_version</otherplaceholder>
-					</placeholders>
-					<schemas>
-						<schema>electives</schema>
-					</schemas>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${project.parent.version}</version>
