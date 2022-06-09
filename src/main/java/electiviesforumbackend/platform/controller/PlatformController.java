@@ -7,6 +7,7 @@ import electiviesforumbackend.platform.dto.ElectiveResponseModel;
 import electiviesforumbackend.platform.dto.InstituteResponseModel;
 import electiviesforumbackend.platform.dto.ReviewModel;
 import electiviesforumbackend.platform.entity.*;
+import electiviesforumbackend.platform.exeptions.AddingCommentException;
 import electiviesforumbackend.platform.service.ElectiveService;
 import electiviesforumbackend.platform.service.instituteService.InstituteService;
 import electiviesforumbackend.platform.service.reviewService.ReviewService;
@@ -62,12 +63,13 @@ public class PlatformController {
 
     private final ReviewService reviewService;
     @PostMapping(path = "review")
-    public ResponseEntity<?> saveReview(@RequestBody ReviewModel review) {
-        Boolean isSave = reviewService.saveReview(review);
-        if (isSave){return new ResponseEntity<>(HttpStatus.OK);}
-        else {
-            throw new EntityNotFoundException("Add error, elective or user not found");
+    public ResponseEntity saveReview(@RequestBody ReviewModel review) throws AddingCommentException{
+        try{
+            reviewService.saveReview(review);
+            return ResponseEntity.ok(HttpStatus.OK);
         }
+        catch (Exception ex){
+        throw new AddingCommentException("Error review adding");}
     }
 
 }

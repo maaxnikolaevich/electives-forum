@@ -11,6 +11,6 @@ import java.util.Set;
 @Table(name = "tag")
 @Data
 public class Tag extends BaseEntity {
-    @ManyToMany(mappedBy = "tags",fetch = FetchType.EAGER)
-    List<Elective> electives = new ArrayList<>();
+    @ManyToMany(mappedBy = "tags",fetch = FetchType.LAZY)
+    Set<Elective> electives = new HashSet<>();
 }

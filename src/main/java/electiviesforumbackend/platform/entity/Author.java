@@ -15,7 +15,7 @@ import java.util.Set;
 public class Author{
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "name")
@@ -26,7 +26,7 @@ public class Author{
     private String description;
 
     @ManyToMany(mappedBy = "authors")
-    List<Elective> electives = new ArrayList<>();
+    Set<Elective> electives = new HashSet<>();
 
 
 }

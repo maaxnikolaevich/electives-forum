@@ -19,17 +19,13 @@ public class ReviewServiceImpl implements ReviewService {
     private final UserRepository userRepository;
     private final ReviewRepository reviewRepository;
 
-    public Boolean saveReview(ReviewModel review) {
+    public void saveReview(ReviewModel review) {
         Elective currentElective = electiveRepository.getById(review.getElective_id());
         User currentUser = userRepository.getById(review.getUser_id());
-        if (currentElective == null || currentUser == null){
-            return false;
-        }
         Review reviewDao = new Review();
         reviewDao.setUser(currentUser);
         reviewDao.setElective(currentElective);
         reviewDao.setTitle(review.getTitle());
         reviewRepository.saveReview(reviewDao);
-        return true;
     }
 }

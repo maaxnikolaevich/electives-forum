@@ -47,12 +47,9 @@ public class UserAuthController {
             if (user != null) {
                 throw new UserAlreadyExistAuthenticationException(String.format("The user - %s already exists!", user.getLogin()));
             }
-            String token = jwtTokenProvider.createToken(userModel.getLogin());
             User newUser = userModel.toUser(userModel, institute);
             userService.register(newUser);
-            Map<Object, Object> response = new HashMap<>();
-            response.put("token", token);
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(HttpStatus.OK);
         }
 
     @PostMapping("login")

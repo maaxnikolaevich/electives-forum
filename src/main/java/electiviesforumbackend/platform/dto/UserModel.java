@@ -17,6 +17,7 @@ public class UserModel {
 
     public User toUser(UserModel userModel, Institute institute){
         User user = new User();
+        user.setLogin(userModel.getLogin());
         user.setEmail(userModel.getEmail());
         user.setPassword(userModel.getPassword());
         user.setInstitute(institute);

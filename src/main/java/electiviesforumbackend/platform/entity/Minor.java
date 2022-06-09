@@ -13,6 +13,6 @@ import java.util.Set;
 @Data
 @Table(name = "minor")
 public class Minor extends BaseEntity {
-    @OneToMany(mappedBy = "minor", fetch = FetchType.EAGER)
-    private List<Elective> elective = new ArrayList<>();
+    @OneToMany(mappedBy = "minor", fetch = FetchType.LAZY)
+    private Set<Elective> elective = new HashSet<>();
 }

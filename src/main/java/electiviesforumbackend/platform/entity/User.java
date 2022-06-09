@@ -7,14 +7,16 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 @Data
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "email")
@@ -35,7 +37,7 @@ public class User {
     private Date updated;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private List<Review> reviews;
+    private Set<Review> reviews = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "institute_id")

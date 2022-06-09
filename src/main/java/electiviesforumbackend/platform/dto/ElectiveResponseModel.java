@@ -27,8 +27,8 @@ public class ElectiveResponseModel {
 
     public void toElective(Elective currentElective){
         Minor currentMinor = currentElective.getMinor();
-        List<Author> currentAuthors = currentElective.getAuthors();
-        List<Tag> currentTags = currentElective.getTags();
+        Set<Author> currentAuthors = currentElective.getAuthors();
+        Set<Tag> currentTags = currentElective.getTags();
 
         this.Id = currentElective.getId();
         this.fullDescription = currentElective.getFullDescription();

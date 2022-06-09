@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class BaseEntity {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "title")

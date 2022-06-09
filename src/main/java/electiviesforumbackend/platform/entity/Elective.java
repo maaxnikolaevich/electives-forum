@@ -39,7 +39,7 @@ public class Elective extends BaseEntity {
             name = "tag_elective",
             joinColumns = @JoinColumn(name = "elective_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags = new ArrayList<>();
+    private Set<Tag> tags = new HashSet<>();
 
 //    @Fetch(FetchMode.JOIN)
 //    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -48,8 +48,8 @@ public class Elective extends BaseEntity {
             name = "author_elective",
             joinColumns = @JoinColumn(name = "elective_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private List<Author> authors = new ArrayList<>();
+    private Set<Author> authors = new HashSet<>();
 
     @OneToMany(mappedBy = "elective",fetch = FetchType.LAZY)
-    private List<Review> reviews = new ArrayList<>();
+    private Set<Review> reviews = new HashSet<>();
 }
