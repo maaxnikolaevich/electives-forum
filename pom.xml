@@ -104,9 +104,9 @@
 					</execution>
 				</executions>
 				<configuration>
-					<url>jdbc:postgresql://localhost:5433/dev</url>
-					<user>root</user>
-					<password>root</password>
+					<url>jdbc:postgresql://ec2-3-224-164-189.compute-1.amazonaws.com:5432/d6oh8k0llhckhe</url>
+					<user>njcheajwuhjdlc</user>
+					<password>38a7c1f2c24ff09e471e0df9a28fb0c56639b6802ccd5eaa30f6f3a2fb8c6b74</password>
 					<locations>
 						<location>src/main/resources/db/migration</location>
 					</locations>
