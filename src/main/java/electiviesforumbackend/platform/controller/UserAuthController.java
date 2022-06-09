@@ -34,7 +34,6 @@ public class UserAuthController {
 
     private final InstituteService instituteService;
 
-    @CrossOrigin(origins = "https://electives-forum-backend.herokuapp.com")
     @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody UserModel userModel) throws UserAlreadyExistAuthenticationException {
         try {
@@ -55,7 +54,7 @@ public class UserAuthController {
         }
     }
 
-    @CrossOrigin(origins = "https://electives-forum-backend.herokuapp.com")
+
     @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody AuthenticationRequestModel requestDto) {
         try {
