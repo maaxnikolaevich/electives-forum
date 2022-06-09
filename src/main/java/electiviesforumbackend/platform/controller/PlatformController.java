@@ -30,6 +30,7 @@ public class PlatformController {
 
     private final InstituteService instituteService;
 
+    @CrossOrigin(origins = "https://electives-forum-backend.herokuapp.com")
     @GetMapping(path = "institutes")
     public ResponseEntity<List<InstituteResponseModel>> listInstitutes(){
         List<Institute> instituteList = instituteService.getInstitutes();
@@ -39,6 +40,7 @@ public class PlatformController {
         return new ResponseEntity<>(responseModel, HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "https://electives-forum-backend.herokuapp.com")
     @GetMapping(path = "electives/{id}")
     public ResponseEntity<?> getElective(@PathVariable Long id) throws GetElectiveException {
         try{
@@ -56,6 +58,7 @@ public class PlatformController {
         }
 
     }
+    @CrossOrigin(origins = "https://electives-forum-backend.herokuapp.com")
     @GetMapping(path = "electives")
     public ResponseEntity<?> listElectives(@PageableDefault(value = 20, page = 0) Pageable
                                                        pageable) {
@@ -71,6 +74,8 @@ public class PlatformController {
     }
 
     private final ReviewService reviewService;
+
+    @CrossOrigin(origins = "https://electives-forum-backend.herokuapp.com")
     @PostMapping(path = "review")
     public ResponseEntity<?> saveReview(@RequestBody ReviewModel review)
             throws AddingCommentException{
