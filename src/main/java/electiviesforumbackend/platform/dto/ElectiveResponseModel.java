@@ -5,6 +5,7 @@ import electiviesforumbackend.platform.entity.Elective;
 import electiviesforumbackend.platform.entity.Minor;
 import electiviesforumbackend.platform.entity.Tag;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.*;
 
@@ -25,7 +26,7 @@ public class ElectiveResponseModel {
 
     private List<String> tags;
 
-    public void toElective(Elective currentElective){
+    public void toElectiveResponseModel(Elective currentElective){
         Minor currentMinor = currentElective.getMinor();
         Set<Author> currentAuthors = currentElective.getAuthors();
         Set<Tag> currentTags = currentElective.getTags();
@@ -55,4 +56,14 @@ public class ElectiveResponseModel {
             this.tags = electiveTags;
         }
     }
+    public List<ElectiveResponseModel> toElectivesResponseModelList(Page <Elective> response){
+        List<ElectiveResponseModel> electives = new ArrayList<>();
+        response.forEach(elective -> {
+            ElectiveResponseModel electiveResponseModel = new ElectiveResponseModel();
+            electiveResponseModel.toElectiveResponseModel(elective);
+            electives.add(electiveResponseModel);
+        });
+        return electives;
+    }
+
 }

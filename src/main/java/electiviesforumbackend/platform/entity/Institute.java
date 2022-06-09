@@ -3,15 +3,23 @@ package electiviesforumbackend.platform.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "institute")
-@Data
+@Getter
+@Setter
 public class Institute extends BaseEntity {
-    @OneToMany(mappedBy = "institute",fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
+    
+    @Fetch(FetchMode.SELECT)
+    @OneToMany(mappedBy = "institute")
+    private List<User> users = new ArrayList<>();
 }

@@ -38,22 +38,27 @@ public class UserAuthController {
     private final InstituteService instituteService;
 
     @PostMapping("register")
-    public ResponseEntity register(@RequestBody UserModel userModel) throws UserAlreadyExistAuthenticationException {
-
+    public ResponseEntity<?> register(@RequestBody UserModel userModel) throws UserAlreadyExistAuthenticationException {
+        try {
             Institute institute = instituteService.getInstituteById(userModel.getInstituteId());
 
             User user = userService.findByLogin(userModel.getLogin());
 
             if (user != null) {
-                throw new UserAlreadyExistAuthenticationException(String.format("The user - %s already exists!", user.getLogin()));
+//                throw new UserAlreadyExistAuthenticationException(String.format("The user - %s already exists!", user.getLogin()));
+                return new ResponseEntity<>(String.format("The user - %s already exists!", user.getLogin()), HttpStatus.UNAUTHORIZED);
             }
             User newUser = userModel.toUser(userModel, institute);
             userService.register(newUser);
             return ResponseEntity.ok(HttpStatus.OK);
         }
+        catch (Exception ex){
+            throw new UserAlreadyExistAuthenticationException("Error when adding user");
+        }
+    }
 
     @PostMapping("login")
-    public ResponseEntity login(@RequestBody AuthenticationRequestModel requestDto) {
+    public ResponseEntity<?> login(@RequestBody AuthenticationRequestModel requestDto) {
         try {
             String login = requestDto.getLogin();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login, requestDto.getPassword()));
@@ -72,7 +77,8 @@ public class UserAuthController {
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid username or password");
+//            throw new BadCredentialsException("Invalid username or password");
+            return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
         }
     }
 }

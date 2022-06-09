@@ -4,8 +4,10 @@ import electiviesforumbackend.platform.entity.User;
 import electiviesforumbackend.platform.security.jwt.JwtUser;
 import electiviesforumbackend.platform.security.jwt.JwtUserFactory;
 import electiviesforumbackend.platform.service.userService.UserService;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +22,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     private final UserService userService;
 
     @Autowired
-    public JwtUserDetailsService(UserService userService) {
+    public JwtUserDetailsService(@Lazy UserService userService) {
         this.userService = userService;
     }
 

@@ -1,6 +1,6 @@
 package electiviesforumbackend.platform.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +11,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "author")
-@Data
+@Getter
+@Setter
 public class Author{
 
     @Id

@@ -1,10 +1,10 @@
 package electiviesforumbackend.platform.service;
 
-import java.util.List;
-
 import electiviesforumbackend.platform.entity.Elective;
 import electiviesforumbackend.platform.repository.ElectiveRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class ElectiveServiceImpl implements ElectiveService {
 
     private final ElectiveRepository repository;
-    public List<Elective> getElectives() {
-        return repository.findAll();
+    public Page<Elective> getElectives(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override

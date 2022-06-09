@@ -1,13 +1,15 @@
 package electiviesforumbackend.platform.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "review")
-@Data
+@Getter
+@Setter
 public class Review extends BaseEntity {
 
     @ManyToOne

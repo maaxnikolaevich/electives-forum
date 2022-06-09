@@ -1,12 +1,15 @@
 package electiviesforumbackend.platform.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

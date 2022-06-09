@@ -1,19 +1,17 @@
 package electiviesforumbackend.platform.entity;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
-@Data
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,7 +35,7 @@ public class User {
     private Date updated;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private Set<Review> reviews = new HashSet<>();
+    private List<Review> reviews = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "institute_id")

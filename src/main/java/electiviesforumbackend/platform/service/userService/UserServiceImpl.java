@@ -2,6 +2,8 @@ package electiviesforumbackend.platform.service.userService;
 
 import electiviesforumbackend.platform.entity.User;
 import electiviesforumbackend.platform.repository.userRepository.UserRepository;
+import lombok.Data;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,16 +14,11 @@ import java.util.List;
 
 @Service
 @Slf4j
+@Data
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Override
     public User register(User user) {
@@ -30,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
         User registeredUser = userRepository.save(user);
 
-        log.info("IN register - user: {} successfully registered", registeredUser);
+        log.info("IN register successfully registered");
 
         return registeredUser;
     }
@@ -46,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByLogin(String username) {
         User result = userRepository.findByLogin(username);
-        log.info("IN findByUsername - user: {} found by username: {}", result, username);
+        log.info("IN findByUsername - found by username: {}", username);
         return result;
     }
 
